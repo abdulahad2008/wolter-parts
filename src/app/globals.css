@@ -1,0 +1,71 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Onest Variable", "Onest", "Segoe UI", system-ui, sans-serif;
+
+  --color-ink: #0f0e0e;
+  --color-lime: #e5ff00;
+  --color-lime-edge: #c9df00;
+  --color-tile: #f2f2ee;
+  --color-tile-2: #ececE7;
+  --color-line: #ecece6;
+  --color-muted: #6b6b65;
+  --color-soft: #3c3c38;
+  --color-faint: #8a8a84;
+  --color-warn: #b35f00;
+  --color-ok: #2f9e44;
+
+  --color-panel: #f6f6f3;
+  --color-panel-line: #e6e6e0;
+  --color-field: #deded7;
+  --color-night: #2c2c30;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-white font-sans text-ink antialiased;
+  }
+  a {
+    color: inherit;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+  }
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+  /* Phones zoom into inputs smaller than 16px; keep form text at 16px there. */
+  @media (max-width: 767px) {
+    input,
+    textarea,
+    select {
+      font-size: 16px !important;
+    }
+  }
+  input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+  }
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@utility pb-safe {
+  padding-bottom: max(16px, env(safe-area-inset-bottom));
+}
